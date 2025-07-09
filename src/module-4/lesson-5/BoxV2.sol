@@ -6,7 +6,7 @@ import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Ini
 contract BoxV2 is Initializable {
     string public name;
     uint256 public value;
-    
+
     function initialize(string memory _name, uint256 _value) public initializer {
         name = _name;
         value = _value;
@@ -19,5 +19,4 @@ contract BoxV2 is Initializable {
     function up() public {
         value++;
     }
-
 }

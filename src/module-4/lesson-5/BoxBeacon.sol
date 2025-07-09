@@ -5,7 +5,7 @@ import {UpgradeableBeacon} from "@openzeppelin/contracts/proxy/beacon/Upgradeabl
 
 contract BoxBeacon {
     UpgradeableBeacon immutable beacon;
-    
+
     address public logic;
 
     constructor(address _logic) {
@@ -18,8 +18,7 @@ contract BoxBeacon {
         logic = _logic;
     }
 
-    function implementation() public view returns(address) {
+    function implementation() public view returns (address) {
         return beacon.implementation();
     }
-
 }

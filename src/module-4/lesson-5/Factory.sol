@@ -6,7 +6,6 @@ import {BoxBeacon} from "./BoxBeacon.sol";
 import {BoxV1} from "./BoxV1.sol";
 
 contract Factory {
-
     mapping(uint256 => address) private boxes;
 
     BoxBeacon immutable beacon;
@@ -17,10 +16,7 @@ contract Factory {
 
     function create(string calldata _name, uint256 _vaLue, uint256 x) external returns (address) {
         BeaconProxy proxy = new BeaconProxy(
-            address(beacon), 
-            abi.encodeWithSelector(BoxV1(address(0)).initialize.selector, 
-            _name, 
-            _vaLue)
+            address(beacon), abi.encodeWithSelector(BoxV1(address(0)).initialize.selector, _name, _vaLue)
         );
         boxes[x] = address(proxy);
         return address(proxy);
@@ -30,11 +26,11 @@ contract Factory {
         return beacon.implementation();
     }
 
-     function getBeacon() public view returns (address) {
+    function getBeacon() public view returns (address) {
         return address(beacon);
     }
 
-     function getBox(uint256 x) public view returns (address) {
+    function getBox(uint256 x) public view returns (address) {
         return boxes[x];
     }
 }
