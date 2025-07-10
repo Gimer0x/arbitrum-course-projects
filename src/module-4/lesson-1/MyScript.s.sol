@@ -12,9 +12,7 @@ contract MyScript is Script {
 
         vm.startBroadcast(deployerPrivateKey);
 
-        myToken = new MyToken(
-                user_pk, 1000, "MyToken", "MTK"
-        );
+        myToken = new MyToken(user_pk, 1000, "MyToken", "MTK");
 
         vm.stopBroadcast();
     }

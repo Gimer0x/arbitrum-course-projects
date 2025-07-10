@@ -24,7 +24,6 @@ contract FuzzTest is Test {
     }
 
     function test_Withdraw() public {
-        
         payable(address(token)).transfer(ONE_ETHER);
         uint256 preBalance = address(this).balance;
         token.withdraw();

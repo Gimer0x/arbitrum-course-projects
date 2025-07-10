@@ -10,7 +10,7 @@ contract MyScript is Script {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast(deployerPrivateKey);
 
-        myToken = new MyToken(msg.sender,1000,"MyToken","MTK");
+        myToken = new MyToken(msg.sender, 1000, "MyToken", "MTK");
 
         vm.stopBroadcast();
     }

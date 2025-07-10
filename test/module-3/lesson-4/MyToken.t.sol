@@ -26,7 +26,7 @@ contract TokenTest is Test {
     }
 
     function test_InitialSupply() public view {
-        uint expectedSupply = 100 ether;
+        uint256 expectedSupply = 100 ether;
         assertEq(token.totalSupply(), expectedSupply, "Token Supply Incorrect!");
         assertEq(token.balanceOf(initialOwner), expectedSupply, "Unexpected balance!");
     }
@@ -36,7 +36,7 @@ contract TokenTest is Test {
         assertEq(token.symbol(), symbol, "Token symbol incorrect!");
     }
 
-    function test_LogMint () public {
+    function test_LogMint() public {
         vm.startPrank(alice);
         vm.expectEmit();
 
@@ -59,7 +59,7 @@ contract TokenTest is Test {
     function test_transfer() public {
         vm.startPrank(alice);
         token.transfer(bob, 2 ether);
-        assertEq(token.balanceOf(bob), 2 ether, "Token balance Incorrect!");        
+        assertEq(token.balanceOf(bob), 2 ether, "Token balance Incorrect!");
         vm.stopPrank();
     }
 
@@ -68,7 +68,7 @@ contract TokenTest is Test {
 
         vm.startPrank(bob);
         token.burn(bob, 1 ether);
-        assertEq(token.balanceOf(bob), 1 ether, "Token balance Incorrect!");        
+        assertEq(token.balanceOf(bob), 1 ether, "Token balance Incorrect!");
         vm.stopPrank();
     }
     /*

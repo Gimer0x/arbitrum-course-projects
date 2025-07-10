@@ -2,9 +2,9 @@
 pragma solidity 0.8.30;
 
 contract DataTypes {
-    uint public value1;
-    uint private value2;
-    uint privateValue;
+    uint256 public value1;
+    uint256 private value2;
+    uint256 privateValue;
 
     uint8 public maxValue = 255;
     uint8 public minValue = 0;
@@ -16,10 +16,10 @@ contract DataTypes {
 
     uint256 public constant MAX_ACCOUNTS = 64;
     address public immutable ADMIN_ACCOUNT;
-	uint256 public constant DAY = 24 hours;
-	uint256 public constant SEVEN_DAYS = 7 days;
-	uint256 public constant ONE_ETHER = 1 ether;
-	uint256 public amount = 1_5000_000 ether;
+    uint256 public constant DAY = 24 hours;
+    uint256 public constant SEVEN_DAYS = 7 days;
+    uint256 public constant ONE_ETHER = 1 ether;
+    uint256 public amount = 1_5000_000 ether;
 
     bool public flag;
     bool public newFlag = true;
@@ -35,21 +35,21 @@ contract DataTypes {
     bytes32 chainBytes32 = 0x0;
 
     // These are invalid declarations
-    uint public transfer; // Evita el uso de palabras reservadas.
-    uint public zxy30; // El nombre de esta variable no tiene significado.
+    uint256 public transfer; // Evita el uso de palabras reservadas.
+    uint256 public zxy30; // El nombre de esta variable no tiene significado.
     // uint public 30zxy; // Esto no compila.
-    uint public _40Value;
+    uint256 public _40Value;
 
     constructor(address _admin) {
         ADMIN_ACCOUNT = _admin;
         tempAddress = payable(myAccount);
     }
 
-    function getPrivateValue() external view returns (uint) {
+    function getPrivateValue() external view returns (uint256) {
         return privateValue;
     }
 
-    function setPrivateValue(uint _value) external {
+    function setPrivateValue(uint256 _value) external {
         privateValue = _value;
     }
 }

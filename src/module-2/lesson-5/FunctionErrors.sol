@@ -3,20 +3,19 @@ pragma solidity 0.8.30;
 
 contract FunctionErrors {
     address private sender;
-    uint private balance;
+    uint256 private balance;
 
     error ErrorZeroAddress();
     error ErrorOnlyOwner(address);
     error ErrorValueNotAllowed();
-
 
     modifier onlySender() {
         require(msg.sender == getSender(), ErrorOnlyOwner(msg.sender));
         _;
     }
 
-    modifier greaterThanZero(uint _val) {
-        if (_val == 0 ) revert ErrorValueNotAllowed();
+    modifier greaterThanZero(uint256 _val) {
+        if (_val == 0) revert ErrorValueNotAllowed();
         _;
     }
 
@@ -34,18 +33,12 @@ contract FunctionErrors {
     function getSender() public view returns (address) {
         return sender;
     }
-    
-    function getBalance() onlySender external view returns (uint) {
+
+    function getBalance() external view onlySender returns (uint256) {
         return balance;
     }
 
-    function increaseBalance() 
-        greaterThanZero(msg.value) 
-        onlySender() 
-        external 
-        payable 
-        returns (bool) 
-    {
+    function increaseBalance() external payable greaterThanZero(msg.value) onlySender returns (bool) {
         balance += msg.value;
         return true;
     }

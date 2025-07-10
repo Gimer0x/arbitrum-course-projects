@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.30;
 
-import { Ownable } from "openzeppelin-contracts/contracts/access/Ownable.sol";
+import {Ownable} from "openzeppelin-contracts/contracts/access/Ownable.sol";
 
-contract NotOptimized is Ownable{
+contract NotOptimized is Ownable {
     uint256 public immutable MIN_PRICE;
     uint256 public price;
     uint256 public sum;
 
     event LogNewPrice(uint256 _price);
-    
-    constructor(uint256 _price) payable Ownable(msg.sender){ 
+
+    constructor(uint256 _price) payable Ownable(msg.sender) {
         MIN_PRICE = _price;
     }
 
@@ -28,8 +28,7 @@ contract NotOptimized is Ownable{
         sum = val;
     }
 
-    function returnProduct(uint256 a, uint256 b) external pure returns(uint256) {
+    function returnProduct(uint256 a, uint256 b) external pure returns (uint256) {
         return a * b;
     }
 }
-

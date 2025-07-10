@@ -3,7 +3,7 @@ pragma solidity 0.8.30;
 
 contract Functions {
     address private sender;
-    uint private balance;
+    uint256 private balance;
 
     constructor() payable {
         sender = msg.sender;
@@ -14,20 +14,21 @@ contract Functions {
     function getSender() public view returns (address) {
         return sender;
     }
-    
-    function getBalance() external view returns (uint) {
-        if(msg.sender == getSender())
+
+    function getBalance() external view returns (uint256) {
+        if (msg.sender == getSender()) {
             return balance;
-        
+        }
+
         return 0;
     }
 
     function increaseBalance() external payable returns (bool) {
-        if( msg.value > 0) {
+        if (msg.value > 0) {
             balance += msg.value;
             return true;
         }
-        
+
         return false;
     }
 }

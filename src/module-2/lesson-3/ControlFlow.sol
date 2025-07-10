@@ -2,30 +2,33 @@
 pragma solidity 0.8.30;
 
 contract ControlFlow {
-    uint public initialValue;
+    uint256 public initialValue;
+
     constructor() {}
 
-    function getFactorial(uint val) public pure returns (uint) {
-        if(val > 1){
-            uint facto = 1;
-            for (uint i = 2; i <= val; i++)
+    function getFactorial(uint256 val) public pure returns (uint256) {
+        if (val > 1) {
+            uint256 facto = 1;
+            for (uint256 i = 2; i <= val; i++) {
                 facto = facto * i;
-            
+            }
+
             return facto;
-        } else
+        } else {
             return 1;
+        }
     }
 
-    function loop(uint val) public pure returns (uint) {
-        uint sum;
-        while(val > 0){
+    function loop(uint256 val) public pure returns (uint256) {
+        uint256 sum;
+        while (val > 0) {
             sum = sum + val;
             val--;
         }
         return sum;
     }
 
-    function conditional(uint val) public {
+    function conditional(uint256 val) public {
         (val > 0) ? initialValue = val : initialValue = 0;
     }
 }

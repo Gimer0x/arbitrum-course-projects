@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.30;
 
-contract SimpleStorage{
+contract SimpleStorage {
     uint256 number;
     address public owner;
 
@@ -27,5 +27,4 @@ contract SimpleStorage{
     function retrieve() external view returns (uint256) {
         return number;
     }
-    
 }

@@ -11,13 +11,15 @@ contract SquareRootTest is Test {
         squareRoot = new SquareRoot();
     }
 
-    function test_Differential() public view{
+    function test_Differential() public view {
         for (uint256 i = 0; i < 5; i++) {
             uint256 babylonianResult = squareRoot.sqrtBabylonian(i);
             uint256 binarySearchResult = squareRoot.sqrtBinarySearch(i);
 
             // Check if both functions return the same output
-            assertEq(babylonianResult, binarySearchResult, string(abi.encodePacked("Mismatch for input: ", uint2str(i))));
+            assertEq(
+                babylonianResult, binarySearchResult, string(abi.encodePacked("Mismatch for input: ", uint2str(i)))
+            );
         }
     }
 

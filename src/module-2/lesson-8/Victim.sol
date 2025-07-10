@@ -3,11 +3,11 @@ pragma solidity 0.8.30;
 
 contract Victim {
     bool value;
-    mapping(address => uint) public userBalance;
-    
+    mapping(address => uint256) public userBalance;
+
     constructor() payable {}
 
-    function victimBalance() public view returns (uint) { 
+    function victimBalance() public view returns (uint256) {
         return address(this).balance;
     }
 
@@ -16,8 +16,8 @@ contract Victim {
     }
 
     function withdraw() external {
-        require(userBalance[msg.sender] > 0, "user has no funds!");        
-        (value, ) = msg.sender.call{value: userBalance[msg.sender]}("");
+        require(userBalance[msg.sender] > 0, "user has no funds!");
+        (value,) = msg.sender.call{value: userBalance[msg.sender]}("");
         userBalance[msg.sender] = 0;
     }
 }

@@ -2,16 +2,15 @@
 pragma solidity 0.8.30;
 
 contract FirstContract {
+    uint256 private value;
 
-    uint private value;
+    constructor() {}
 
-    constructor () {}
-
-    function setValue (uint _value) external {
+    function setValue(uint256 _value) external {
         value = _value;
     }
 
-    function getValue() external view returns (uint) {
+    function getValue() external view returns (uint256) {
         return value;
     }
 }
