@@ -64,3 +64,8 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+
+### Remmapings
+```shell
+forge remappings > remappings.txt
+```
