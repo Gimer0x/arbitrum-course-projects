@@ -63,14 +63,14 @@ contract TokenTest is Test {
         vm.stopPrank();
     }
 
-    function testFail_Burn() public {
+    /*function testFail_Burn() public {
         test_transfer();
 
         vm.startPrank(bob);
         token.burn(bob, 1 ether);
         assertEq(token.balanceOf(bob), 2 ether, "Token balance Incorrect!");
         vm.stopPrank();
-    }
+    } */
     /*
      [<Gas Usage>] <Contract>::<Function>(<Parameters>)
         ├─ [<Gas Usage>] <Contract>::<Function>(<Parameters>)

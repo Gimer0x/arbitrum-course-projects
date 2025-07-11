@@ -9,7 +9,7 @@ contract BoxBeacon {
     address public logic;
 
     constructor(address _logic) {
-        beacon = new UpgradeableBeacon(_logic);
+        beacon = UpgradeableBeacon(_logic);
         logic = _logic;
     }
 

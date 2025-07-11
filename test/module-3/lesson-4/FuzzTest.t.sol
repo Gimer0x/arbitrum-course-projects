@@ -19,7 +19,7 @@ contract FuzzTest is Test {
     receive() external payable {}
 
     function setUp() public {
-        initialOwner = alice;
+        initialOwner = address(this);
         token = new MyToken(initialOwner, initialSupply, name, symbol);
     }
 
@@ -31,20 +31,22 @@ contract FuzzTest is Test {
         assertEq(preBalance + ONE_ETHER, postBalance);
     }
 
-    /*function testFuzz_Withdraw_1(uint256 amount) public {
-        payable(address(token)).transfer(amount);
-        uint256 preBalance = address(this).balance;
-        token.withdraw();
-        uint256 postBalance = address(this).balance;
-        assertEq(preBalance + amount, postBalance);
-    } */
-
-    function testFuzz_Withdraw_2(uint96 amount) public {
-        vm.assume(amount > 0.1 ether);
+    function testFuzz_Withdraw_1(uint256 amount) public {
+        vm.assume(amount > 0 && amount <= 100 ether);
         payable(address(token)).transfer(amount);
         uint256 preBalance = address(this).balance;
         token.withdraw();
         uint256 postBalance = address(this).balance;
         assertEq(preBalance + amount, postBalance);
     }
+
+    // Should fail
+    /* function testFuzz_Withdraw_2(uint96 amount) public {
+        vm.assume(amount > 0.1 ether);
+        payable(address(token)).transfer(amount);
+        uint256 preBalance = address(this).balance;
+        token.withdraw();
+        uint256 postBalance = address(this).balance;
+        assertEq(preBalance + amount, postBalance);
+    } */
 }
